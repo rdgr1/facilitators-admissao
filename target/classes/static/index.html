@@ -304,7 +304,7 @@ body {
 }
 
 /* ============================================================
-   FOOTER — botão de download
+   FOOTER — botões de ação
    ============================================================ */
 .footer {
   background: var(--verde-profundo);
@@ -314,37 +314,56 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .footer-note {
   font-size: 11.5px;
   color: var(--salvia);
   line-height: 1.45;
   flex: 1;
+  min-width: 140px;
+}
+.footer-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .btn-dl {
   display: flex;
   align-items: center;
-  gap: 9px;
-  background: var(--verde-claro);
-  color: var(--oliva);
+  gap: 7px;
   border: none;
   border-radius: 8px;
-  padding: 11px 24px;
+  padding: 10px 18px;
   font-family: var(--font-title);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
   transition: background .15s, transform .1s;
+  color: var(--branco);
 }
-.btn-dl:hover  { background: var(--verde-escuro); color: var(--branco); }
 .btn-dl:active { transform: scale(.97); }
-.btn-dl svg    { width: 18px; height: 18px; flex-shrink: 0; }
-
-/* Estado de loading no botão */
+.btn-dl svg    { width: 16px; height: 16px; flex-shrink: 0; }
 .btn-dl.loading { opacity: .7; cursor: not-allowed; }
+
+/* DOCX */
+.btn-docx { background: var(--verde-escuro); }
+.btn-docx:hover { background: var(--verde-claro); color: var(--oliva); }
+
+/* PDF */
+.btn-pdf { background: #4C5A29; }
+.btn-pdf:hover { background: #3a4520; }
+
+/* E-mail */
+.btn-email { background: #2471A3; }
+.btn-email:hover { background: #1A5276; }
+
+/* WhatsApp */
+.btn-wa { background: #1A7A53; }
+.btn-wa:hover { background: #135c3e; }
 
 /* Toast */
 #toast {
@@ -366,22 +385,8 @@ body {
 
   <!-- ── HEADER ───────────────────────────────────────────── -->
   <div class="header">
-    <!-- Símbolo: dois "F" entrelaçados (representação SVG do logo) -->
-    <div class="logo-mark" aria-hidden="true">
-      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- F verde escuro rotacionado 45° -->
-        <g transform="translate(26,26) rotate(45) translate(-13,-13)">
-          <rect x="0" y="0" width="5" height="26" fill="#4C5A29" rx="1"/>
-          <rect x="0" y="0" width="18" height="5" fill="#4C5A29" rx="1"/>
-          <rect x="0" y="11" width="13" height="4" fill="#4C5A29" rx="1"/>
-        </g>
-        <!-- F verde claro rotacionado 45° deslocado -->
-        <g transform="translate(26,26) rotate(-135) translate(-13,-13)" opacity=".85">
-          <rect x="0" y="0" width="5" height="26" fill="#A7B66B" rx="1"/>
-          <rect x="0" y="0" width="18" height="5" fill="#A7B66B" rx="1"/>
-          <rect x="0" y="11" width="13" height="4" fill="#A7B66B" rx="1"/>
-        </g>
-      </svg>
+    <div class="logo-mark">
+      <img src="/logo-facilitators.jpeg" alt="Facilitators" style="width:52px;height:52px;object-fit:contain;border-radius:50%;">
     </div>
     <div class="header-text">
       <h1>Facilitators</h1>
@@ -602,14 +607,26 @@ body {
   <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <div class="footer">
     <div class="footer-note">
-      Preencha todos os campos e clique em "Baixar ficha" para gerar o .docx preenchido.
+      Preencha e baixe como Word ou PDF. Use E-mail ou WhatsApp para compartilhar — basta anexar o arquivo.
     </div>
-    <button class="btn-dl" id="btnDownload" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-        <path d="M12 3v13M7 11l5 5 5-5M3 20h18"/>
-      </svg>
-      Baixar ficha
-    </button>
+    <div class="footer-actions">
+      <button class="btn-dl btn-docx" id="btnDownload" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 3v13M7 11l5 5 5-5M3 20h18"/></svg>
+        Word
+      </button>
+      <button class="btn-dl btn-pdf" id="btnPdf" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 3v13M7 11l5 5 5-5M3 20h18"/></svg>
+        PDF
+      </button>
+      <button class="btn-dl btn-email" id="btnEmail" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        E-mail
+      </button>
+      <button class="btn-dl btn-wa" id="btnWa" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.054 23.404a.75.75 0 0 0 .916.951l5.741-1.506A11.952 11.952 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.522-5.168-1.43l-.37-.22-3.84 1.007 1.022-3.727-.24-.385A9.972 9.972 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp
+      </button>
+    </div>
   </div>
 
 </div><!-- /wrap -->
@@ -673,56 +690,70 @@ function showToast(msg, erro = false) {
   setTimeout(() => el.classList.remove('show'), 3500);
 }
 
-// ── Download ─────────────────────────────────────────────
-document.getElementById('btnDownload').addEventListener('click', async () => {
-  const form   = document.getElementById('admissaoForm');
-  const btn    = document.getElementById('btnDownload');
-  const fd     = new FormData(form);
+// ── Coleta payload ───────────────────────────────────────
+function coletarPayload() {
+  const fd = new FormData(document.getElementById('admissaoForm'));
   const payload = {};
-
-  // campos simples
   for (const [k, v] of fd.entries()) {
-    if (!['depNome','depParentesco','depNasc','depCpf'].includes(k)) {
-      payload[k] = v;
-    }
+    if (!['depNome','depParentesco','depNasc','depCpf'].includes(k)) payload[k] = v;
   }
-
-  // dependentes
   payload.dependentes = coletarDependentes();
+  return payload;
+}
 
+// ── Download genérico (Word ou PDF) ─────────────────────
+async function baixarFormato(endpoint, ext, btn, labelOriginal) {
+  const payload = coletarPayload();
   btn.classList.add('loading');
   btn.textContent = 'Gerando...';
-
   try {
-    const res = await fetch('/api/admissao/gerar', {
-      method:  'POST',
+    const res = await fetch(endpoint, {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload)
+      body: JSON.stringify(payload)
     });
-
-    if (!res.ok) throw new Error(`Erro ${res.status}: ${res.statusText}`);
-
-    const blob     = await res.blob();
-    const url      = URL.createObjectURL(blob);
-    const a        = document.createElement('a');
-    const nome     = payload.nome?.replace(/\s+/g, '_') || 'preenchida';
-    a.href         = url;
-    a.download     = `ficha_admissao_${nome}.docx`;
-    a.click();
+    if (!res.ok) throw new Error(`Erro ${res.status}`);
+    const blob = await res.blob();
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    const nome = (payload.nome || 'preenchida').replace(/\s+/g, '_');
+    a.href = url; a.download = `ficha_admissao_${nome}.${ext}`; a.click();
     URL.revokeObjectURL(url);
-
-    showToast('✓ Ficha gerada com sucesso!');
+    showToast(`✓ ${ext.toUpperCase()} gerado com sucesso!`);
   } catch (err) {
     console.error(err);
-    showToast('Erro ao gerar a ficha. Verifique a conexão.', true);
+    showToast('Erro ao gerar. Verifique a conexão.', true);
   } finally {
     btn.classList.remove('loading');
-    btn.innerHTML = `
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
-        <path d="M12 3v13M7 11l5 5 5-5M3 20h18"/>
-      </svg>
-      Baixar ficha`;
+    btn.innerHTML = labelOriginal;
   }
+}
+
+const LABEL_WORD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M12 3v13M7 11l5 5 5-5M3 20h18"/></svg> Word`;
+const LABEL_PDF  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M12 3v13M7 11l5 5 5-5M3 20h18"/></svg> PDF`;
+
+document.getElementById('btnDownload').addEventListener('click', function() {
+  baixarFormato('/api/admissao/gerar', 'docx', this, LABEL_WORD);
+});
+
+document.getElementById('btnPdf').addEventListener('click', function() {
+  baixarFormato('/api/admissao/gerar-pdf', 'pdf', this, LABEL_PDF);
+});
+
+// ── E-mail ───────────────────────────────────────────────
+document.getElementById('btnEmail').addEventListener('click', async () => {
+  const p = coletarPayload();
+  const res = await fetch(`/api/admissao/mailto-link?nome=${encodeURIComponent(p.nome||'')}&empresa=${encodeURIComponent(p.empresa||'')}`);
+  const { url } = await res.json();
+  window.location.href = url;
+});
+
+// ── WhatsApp ─────────────────────────────────────────────
+document.getElementById('btnWa').addEventListener('click', async () => {
+  const p = coletarPayload();
+  const res = await fetch(`/api/admissao/whatsapp-link?nome=${encodeURIComponent(p.nome||'')}&empresa=${encodeURIComponent(p.empresa||'')}`);
+  const { url } = await res.json();
+  window.open(url, '_blank');
 });
 </script>
 </body>
