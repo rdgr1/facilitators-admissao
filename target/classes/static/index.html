@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha de Admissão — Facilitators</title>
+
+<!-- Tipografia oficial: Montserrat (títulos) + Inter Tight (corpo) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS — Manual de Marca Facilitators 2026
+   ============================================================ */
+:root {
+  --verde-escuro:  #768A42;   /* cor primária */
+  --verde-claro:   #A7B66B;   /* acento / hover */
+  --verde-profundo:#4C5A29;   /* hover escuro / foco */
+  --salvia:        #D0DCAC;   /* superfícies suaves */
+  --oliva:         #20280F;   /* texto sobre verde */
+  --preto:         #0A0A0A;
+  --marfim:        #F4F6EC;   /* background da página */
+  --branco:        #FFFFFF;
+
+  /* derivados de UI */
+  --border:        #C8D49A;
+  --border-focus:  var(--verde-escuro);
+  --muted:         #6B7A50;
+  --surface-card:  var(--branco);
+  --surface-alt:   #EFF3E6;   /* blocos internos */
+
+  /* tipografia */
+  --font-title: 'Montserrat', sans-serif;
+  --font-body:  'Inter Tight', sans-serif;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  background: var(--marfim);
+  color: var(--preto);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1rem 3rem;
+}
+
+.wrap { width: 100%; max-width: 740px; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  background: var(--verde-escuro);
+  border-radius: 12px 12px 0 0;
+  padding: 1.4rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Símbolo: dois "F" entrelaçados simplificados em CSS */
+.logo-mark {
+  width: 52px; height: 52px;
+  flex-shrink: 0;
+  position: relative;
+}
+.logo-mark svg { width: 52px; height: 52px; }
+
+.header-text h1 {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: .04em;
+  color: var(--branco);
+  text-transform: uppercase;
+}
+.header-text p {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: .18em;
+  color: var(--salvia);
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ============================================================
+   AVISO LARANJA — usa verde claro no manual real
+   ============================================================ */
+.notice {
+  background: var(--surface-alt);
+  border-left: 3px solid var(--verde-claro);
+  padding: 10px 16px;
+  font-size: 12.5px;
+  color: var(--oliva);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   CORPO DO FORMULÁRIO
+   ============================================================ */
+.fb {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 1.75rem;
+}
+
+/* Seção */
+.sec { margin-bottom: 1.75rem; }
+.sec-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--verde-escuro);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid var(--verde-escuro);
+  margin-bottom: 16px;
+}
+.sec-title::before {
+  content: '';
+  display: inline-block;
+  width: 14px; height: 14px;
+  background: var(--verde-claro);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.divider { height: 1px; background: var(--border); margin: 1.5rem 0; opacity: .6; }
+
+/* Grids */
+.row   { display: grid; gap: 11px; margin-bottom: 11px; }
+.r1    { grid-template-columns: 1fr; }
+.r2    { grid-template-columns: 1fr 1fr; }
+.r3    { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Campos */
+.f { display: flex; flex-direction: column; gap: 4px; }
+.f label {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.f input,
+.f select {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--preto);
+  background: var(--branco);
+  height: 36px;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.f select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23768A42' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+.f input:focus,
+.f select:focus {
+  border-color: var(--verde-escuro);
+  box-shadow: 0 0 0 3px rgba(118, 138, 66, .15);
+}
+.f input::placeholder { color: #b0bc99; }
+
+/* Radio & Checkbox */
+.fl { display: flex; flex-direction: column; gap: 4px; }
+.fl > span {
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.rg  { display: flex; gap: 14px; flex-wrap: wrap; padding-top: 6px; align-items: center; }
+.rg  label { display: flex; align-items: center; gap: 5px; font-size: 13.5px; color: var(--preto); cursor: pointer; }
+.rg  input[type=radio]     { accent-color: var(--verde-escuro); width: 15px; height: 15px; }
+.cg  { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px; }
+.cg  label { display: flex; align-items: center; gap: 5px; font-size: 13.5px; color: var(--preto); cursor: pointer; }
+.cg  input[type=checkbox]  { accent-color: var(--verde-claro); width: 15px; height: 15px; }
+
+/* Empresa bar */
+.empresa-bar {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 9px 13px;
+  font-size: 13.5px;
+  color: var(--preto);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.empresa-bar strong {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--verde-escuro);
+}
+.empresa-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--preto);
+  flex: 1;
+}
+
+/* Bloco dependente */
+.dep-block {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+.dep-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.dep-label {
+  font-family: var(--font-title);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.btn-remove {
+  background: none;
+  border: none;
+  color: #c0392b;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+}
+.btn-remove:hover { background: #fde8e6; }
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--verde-escuro);
+  background: none;
+  border: 1px dashed var(--verde-claro);
+  border-radius: 7px;
+  padding: 8px 14px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background .15s;
+}
+.btn-add:hover { background: var(--surface-alt); }
+
+/* Assinaturas */
+.sigs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.sig {
+  text-align: center;
+  padding-top: 8px;
+  border-top: 1.5px solid var(--verde-escuro);
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ============================================================
+   FOOTER — botão de download
+   ============================================================ */
+.footer {
+  background: var(--verde-profundo);
+  border-radius: 0 0 12px 12px;
+  padding: 1rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.footer-note {
+  font-size: 11.5px;
+  color: var(--salvia);
+  line-height: 1.45;
+  flex: 1;
+}
+.btn-dl {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--verde-claro);
+  color: var(--oliva);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 24px;
+  font-family: var(--font-title);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, transform .1s;
+}
+.btn-dl:hover  { background: var(--verde-escuro); color: var(--branco); }
+.btn-dl:active { transform: scale(.97); }
+.btn-dl svg    { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* Estado de loading no botão */
+.btn-dl.loading { opacity: .7; cursor: not-allowed; }
+
+/* Toast */
+#toast {
+  position: fixed; bottom: 1.5rem; right: 1.5rem;
+  background: var(--verde-profundo); color: var(--branco);
+  padding: 12px 20px; border-radius: 8px;
+  font-size: 13.5px; font-family: var(--font-body);
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  transform: translateY(120%);
+  transition: transform .3s ease;
+  z-index: 999;
+}
+#toast.show { transform: translateY(0); }
+#toast.error { background: #922b21; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ── HEADER ───────────────────────────────────────────── -->
+  <div class="header">
+    <!-- Símbolo: dois "F" entrelaçados (representação SVG do logo) -->
+    <div class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- F verde escuro rotacionado 45° -->
+        <g transform="translate(26,26) rotate(45) translate(-13,-13)">
+          <rect x="0" y="0" width="5" height="26" fill="#4C5A29" rx="1"/>
+          <rect x="0" y="0" width="18" height="5" fill="#4C5A29" rx="1"/>
+          <rect x="0" y="11" width="13" height="4" fill="#4C5A29" rx="1"/>
+        </g>
+        <!-- F verde claro rotacionado 45° deslocado -->
+        <g transform="translate(26,26) rotate(-135) translate(-13,-13)" opacity=".85">
+          <rect x="0" y="0" width="5" height="26" fill="#A7B66B" rx="1"/>
+          <rect x="0" y="0" width="18" height="5" fill="#A7B66B" rx="1"/>
+          <rect x="0" y="11" width="13" height="4" fill="#A7B66B" rx="1"/>
+        </g>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1>Facilitators</h1>
+      <p>Treinamento &amp; Serviços Contábeis</p>
+    </div>
+  </div>
+
+  <!-- ── AVISO ─────────────────────────────────────────────── -->
+  <div class="notice">
+    Para se prevenir de aborrecimentos futuros com a fiscalização, preencha esta ficha completamente.
+    Os dados informados são de responsabilidade do empregador e sujeitos à fiscalização.
+  </div>
+
+  <!-- ── FORMULÁRIO ─────────────────────────────────────────── -->
+  <form id="admissaoForm" class="fb" autocomplete="off">
+
+    <!-- EMPRESA -->
+    <div class="sec">
+      <div class="sec-title">Preenchido pela empresa</div>
+      <div class="empresa-bar">
+        <strong>Empresa</strong>
+        <input type="text" name="empresa" value="JULIA ...." placeholder="Nome da empresa">
+      </div>
+      <div class="row r3">
+        <div class="f"><label>Função</label>
+          <input type="text" name="funcao" placeholder="Cargo / função"></div>
+        <div class="f"><label>Data de admissão</label>
+          <input type="date" name="dataAdmissao"></div>
+        <div class="f"><label>Salário (R$)</label>
+          <input type="text" name="salario" placeholder="0,00"></div>
+      </div>
+      <div class="row r3">
+        <div class="f"><label>Horário início</label>
+          <input type="time" name="horarioInicio"></div>
+        <div class="f"><label>Horário fim</label>
+          <input type="time" name="horarioFim"></div>
+        <div class="f"><label>Intervalo</label>
+          <input type="text" name="intervalo" placeholder="ex: 1h"></div>
+      </div>
+      <div class="fl">
+        <span>Prazo do contrato de experiência</span>
+        <div class="cg">
+          <label><input type="radio" name="prazoContrato" value="30"> 30 dias</label>
+          <label><input type="radio" name="prazoContrato" value="45"> 45 dias</label>
+          <label><input type="radio" name="prazoContrato" value="60"> 60 dias</label>
+          <label><input type="radio" name="prazoContrato" value="90" checked> 90 dias</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CANDIDATO -->
+    <div class="sec">
+      <div class="sec-title">Dados do candidato</div>
+      <div class="row r1">
+        <div class="f"><label>Nome completo</label>
+          <input type="text" name="nome" placeholder="Nome completo do candidato"></div>
+      </div>
+      <div class="row" style="grid-template-columns:1fr 2fr 1fr 1fr;gap:11px;margin-bottom:11px">
+        <div class="fl">
+          <span>Sexo</span>
+          <div class="rg">
+            <label><input type="radio" name="sexo" value="Feminino"> Fem.</label>
+            <label><input type="radio" name="sexo" value="Masculino"> Masc.</label>
+          </div>
+        </div>
+        <div class="f"><label>Grau de escolaridade</label>
+          <select name="escolaridade">
+            <option value="">Selecione...</option>
+            <option>Fundamental incompleto</option><option>Fundamental completo</option>
+            <option>Médio incompleto</option><option>Médio completo</option>
+            <option>Superior incompleto</option><option>Superior completo</option>
+            <option>Pós-graduação</option>
+          </select></div>
+        <div class="f"><label>Cor / raça</label>
+          <select name="cor">
+            <option value="">Selecione...</option>
+            <option>Branca</option><option>Preta</option><option>Parda</option>
+            <option>Amarela</option><option>Indígena</option>
+          </select></div>
+        <div class="f"><label>Tipo sanguíneo</label>
+          <select name="tipoSanguineo">
+            <option value="">—</option>
+            <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+            <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+          </select></div>
+      </div>
+      <div class="row r1">
+        <div class="f"><label>Endereço (quadra / conjunto / casa)</label>
+          <input type="text" name="endereco" placeholder="Quadra __ Conjunto __ Casa __"></div>
+      </div>
+      <div class="row" style="grid-template-columns:2fr .5fr 1.1fr 1.3fr;gap:11px;margin-bottom:11px">
+        <div class="f"><label>Cidade</label>
+          <input type="text" name="cidade" placeholder="Brasília"></div>
+        <div class="f"><label>UF</label>
+          <input type="text" name="uf" value="DF" maxlength="2"></div>
+        <div class="f"><label>CEP</label>
+          <input type="text" name="cep" placeholder="00.000-000" maxlength="10"></div>
+        <div class="f"><label>Telefone(s)</label>
+          <input type="text" name="telefone" placeholder="(61) 9xxxx-xxxx"></div>
+      </div>
+      <div class="row" style="grid-template-columns:1.2fr .6fr 1.2fr;gap:11px;margin-bottom:11px">
+        <div class="f"><label>Estado civil</label>
+          <select name="estadoCivil">
+            <option value="">Selecione...</option>
+            <option>Solteiro(a)</option><option>Casado(a)</option>
+            <option>Divorciado(a)</option><option>Viúvo(a)</option><option>União estável</option>
+          </select></div>
+        <div class="f"><label>Idade</label>
+          <input type="number" name="idade" placeholder="00" min="14" max="99"></div>
+        <div class="f"><label>Nacionalidade</label>
+          <input type="text" name="nacionalidade" value="BRASILEIRA"></div>
+      </div>
+      <div class="row r3">
+        <div class="f"><label>Data de nascimento</label>
+          <input type="date" name="dataNascimento"></div>
+        <div class="f"><label>Local de nascimento</label>
+          <input type="text" name="localNascimento" placeholder="Brasília"></div>
+        <div class="f"><label>UF nascimento</label>
+          <input type="text" name="ufNascimento" value="DF" maxlength="2"></div>
+      </div>
+      <div class="row r2">
+        <div class="f"><label>Nome do cônjuge</label>
+          <input type="text" name="conjuge" placeholder="Se casado(a)"></div>
+        <div class="f"><label>Filiação — pai</label>
+          <input type="text" name="pai" placeholder="Nome do pai"></div>
+      </div>
+      <div class="row r1">
+        <div class="f"><label>Filiação — mãe</label>
+          <input type="text" name="mae" placeholder="Nome da mãe"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DEPENDENTES -->
+    <div class="sec">
+      <div class="sec-title">Beneficiários e dependentes</div>
+      <div id="dependentes-container">
+        <!-- bloco padrão -->
+        <div class="dep-block" data-dep="0">
+          <div class="dep-header">
+            <span class="dep-label">Dependente 1</span>
+          </div>
+          <div class="row r3">
+            <div class="f"><label>Nome</label>
+              <input type="text" name="depNome" placeholder="Nome completo"></div>
+            <div class="f"><label>Grau de parentesco</label>
+              <select name="depParentesco">
+                <option>FILHO(A)</option><option>Cônjuge</option>
+                <option>Pai / Mãe</option><option>Outro</option>
+              </select></div>
+            <div class="f"><label>Data de nascimento</label>
+              <input type="date" name="depNasc"></div>
+          </div>
+          <div class="row r2">
+            <div class="f"><label>CPF</label>
+              <input type="text" name="depCpf" placeholder="000.000.000-00"></div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn-add" id="btnAddDep">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Adicionar dependente
+      </button>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DOCUMENTOS -->
+    <div class="sec">
+      <div class="sec-title">Documentos</div>
+      <div class="row" style="grid-template-columns:2fr 1fr .7fr;gap:11px;margin-bottom:11px">
+        <div class="f"><label>CTPS nº</label>
+          <input type="text" name="ctpsNum" placeholder="40000"></div>
+        <div class="f"><label>Série</label>
+          <input type="text" name="ctpsSerie" placeholder="00037"></div>
+        <div class="f"><label>UF</label>
+          <input type="text" name="ctpsUf" value="DF" maxlength="2"></div>
+      </div>
+      <div class="row" style="grid-template-columns:1.5fr 1fr 1.1fr;gap:11px;margin-bottom:11px">
+        <div class="f"><label>Carteira de identidade nº</label>
+          <input type="text" name="rgNum" placeholder="0000000"></div>
+        <div class="f"><label>Expedida em</label>
+          <input type="date" name="rgData"></div>
+        <div class="f"><label>Órgão expedidor</label>
+          <input type="text" name="rgOrgao" placeholder="SSP/DF"></div>
+      </div>
+      <div class="row" style="grid-template-columns:2fr 1fr 1fr;gap:11px;margin-bottom:11px">
+        <div class="f"><label>Título de eleitor</label>
+          <input type="text" name="tituloNum" placeholder="0000.0000.2003"></div>
+        <div class="f"><label>Seção</label>
+          <input type="text" name="tituloSecao" placeholder="0000"></div>
+        <div class="f"><label>Zona</label>
+          <input type="text" name="tituloZona" placeholder="001"></div>
+      </div>
+      <div class="row r3">
+        <div class="f"><label>CPF nº</label>
+          <input type="text" name="cpf" placeholder="000.000.000-00"></div>
+        <div class="f"><label>PIS nº</label>
+          <input type="text" name="pis" placeholder="00000000000"></div>
+        <div class="f"><label>Reservista nº</label>
+          <input type="text" name="reservista" placeholder="000000000000"></div>
+      </div>
+    </div>
+
+    <!-- ASSINATURAS -->
+    <div class="sigs">
+      <div class="sig">Empregado</div>
+      <div class="sig">Empregador</div>
+    </div>
+
+  </form>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <div class="footer">
+    <div class="footer-note">
+      Preencha todos os campos e clique em "Baixar ficha" para gerar o .docx preenchido.
+    </div>
+    <button class="btn-dl" id="btnDownload" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path d="M12 3v13M7 11l5 5 5-5M3 20h18"/>
+      </svg>
+      Baixar ficha
+    </button>
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- Toast de feedback -->
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<script>
+// ── Dependentes dinâmicos ─────────────────────────────────
+let depCount = 1;
+document.getElementById('btnAddDep').addEventListener('click', () => {
+  depCount++;
+  const container = document.getElementById('dependentes-container');
+  const bloco = document.createElement('div');
+  bloco.className = 'dep-block';
+  bloco.dataset.dep = depCount;
+  bloco.innerHTML = `
+    <div class="dep-header">
+      <span class="dep-label">Dependente ${depCount}</span>
+      <button type="button" class="btn-remove" onclick="removerDep(this)">✕ Remover</button>
+    </div>
+    <div class="row r3">
+      <div class="f"><label>Nome</label>
+        <input type="text" name="depNome" placeholder="Nome completo"></div>
+      <div class="f"><label>Grau de parentesco</label>
+        <select name="depParentesco">
+          <option>FILHO(A)</option><option>Cônjuge</option>
+          <option>Pai / Mãe</option><option>Outro</option>
+        </select></div>
+      <div class="f"><label>Data de nascimento</label>
+        <input type="date" name="depNasc"></div>
+    </div>
+    <div class="row r2">
+      <div class="f"><label>CPF</label>
+        <input type="text" name="depCpf" placeholder="000.000.000-00"></div>
+    </div>`;
+  container.appendChild(bloco);
+});
+
+function removerDep(btn) {
+  btn.closest('.dep-block').remove();
+}
+
+// ── Coleta os dependentes ────────────────────────────────
+function coletarDependentes() {
+  const blocos = document.querySelectorAll('.dep-block');
+  return Array.from(blocos).map(b => ({
+    nome:        b.querySelector('[name=depNome]')?.value  || '',
+    parentesco:  b.querySelector('[name=depParentesco]')?.value || '',
+    dataNasc:    b.querySelector('[name=depNasc]')?.value  || '',
+    cpf:         b.querySelector('[name=depCpf]')?.value   || ''
+  }));
+}
+
+// ── Toast ────────────────────────────────────────────────
+function showToast(msg, erro = false) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = erro ? 'error' : '';
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+// ── Download ─────────────────────────────────────────────
+document.getElementById('btnDownload').addEventListener('click', async () => {
+  const form   = document.getElementById('admissaoForm');
+  const btn    = document.getElementById('btnDownload');
+  const fd     = new FormData(form);
+  const payload = {};
+
+  // campos simples
+  for (const [k, v] of fd.entries()) {
+    if (!['depNome','depParentesco','depNasc','depCpf'].includes(k)) {
+      payload[k] = v;
+    }
+  }
+
+  // dependentes
+  payload.dependentes = coletarDependentes();
+
+  btn.classList.add('loading');
+  btn.textContent = 'Gerando...';
+
+  try {
+    const res = await fetch('/api/admissao/gerar', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error(`Erro ${res.status}: ${res.statusText}`);
+
+    const blob     = await res.blob();
+    const url      = URL.createObjectURL(blob);
+    const a        = document.createElement('a');
+    const nome     = payload.nome?.replace(/\s+/g, '_') || 'preenchida';
+    a.href         = url;
+    a.download     = `ficha_admissao_${nome}.docx`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    showToast('✓ Ficha gerada com sucesso!');
+  } catch (err) {
+    console.error(err);
+    showToast('Erro ao gerar a ficha. Verifique a conexão.', true);
+  } finally {
+    btn.classList.remove('loading');
+    btn.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+        <path d="M12 3v13M7 11l5 5 5-5M3 20h18"/>
+      </svg>
+      Baixar ficha`;
+  }
+});
+</script>
+</body>
+</html>
